@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-traslados" insertBefore="administration" caption="mainMsg://menu_config.application-traslados">
+        <item screen="traslados_Empresas.browse" caption="mainMsg://menu_config.traslados_Empresas.browse"/>
+        <item screen="traslados_Lanchas.browse" caption="mainMsg://menu_config.traslados_Lanchas.browse"/>
+        <item screen="traslados_Puertos.browse" caption="mainMsg://menu_config.traslados_Puertos.browse"/>
+        <item screen="traslados_Tripulacion.browse" caption="mainMsg://menu_config.traslados_Tripulacion.browse"/>
+        <item screen="traslados_Practicos.browse" caption="mainMsg://menu_config.traslados_Practicos.browse"/>
+        <item screen="traslados_Traslados.browse" caption="mainMsg://menu_config.traslados_Traslados.browse"/>
+    </menu>
+</menu-config>

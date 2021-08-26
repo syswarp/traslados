@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://practicosEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.traslados.web.screens.practicos">
+    <data>
+        <instance id="practicosDc"
+                  class="com.company.traslados.entity.Practicos">
+            <view extends="_local">
+                <property name="empresa" fetch="JOIN" view="_base" >
+                    <property name="name"/>
+                </property>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="practicosDc">
+            <column width="350px">
+                <pickerField id="empresaField" property="empresa" >
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="nameField" property="name"/>
+                <textField id="emailField" property="email"/>
+                <textField id="celularField" property="celular"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

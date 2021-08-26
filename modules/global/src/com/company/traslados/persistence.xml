@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="traslados" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.company.traslados.entity.Empresas</class>
+        <class>com.company.traslados.entity.Practicos</class>
+        <class>com.company.traslados.entity.Lanchas</class>
+        <class>com.company.traslados.entity.Puertos</class>
+        <class>com.company.traslados.entity.Tripulacion</class>
+        <class>com.company.traslados.entity.Traslados</class>
+    </persistence-unit>
+</persistence>

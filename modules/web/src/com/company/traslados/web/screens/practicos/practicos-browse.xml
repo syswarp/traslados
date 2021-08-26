@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="Practicos"
+        focusComponent="practicosesTable"
+        messagesPack="com.company.traslados.web.screens.practicos">
+    <data readOnly="true">
+        <collection id="practicosesDc"
+                    class="com.company.traslados.entity.Practicos">
+            <view extends="_local">
+                <property name="empresa" fetch="JOIN" view="_minimal">
+                    <property name="name"/>
+                </property>
+            </view>
+            <loader id="practicosesDl">
+                <query>
+                    <![CDATA[select e from traslados_Practicos e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="practicosesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="practicosesTable"
+                dataLoader="practicosesDl" caption="Filtrar">
+            <properties include=".*"/>
+        </filter>
+        <table id="practicosesTable"
+               width="100%"
+               dataContainer="practicosesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="email"/>
+                <column id="celular"/>
+                <column id="empresa.name"/>
+            </columns>
+
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="practicosesTable.create" caption="Nuevo"/>
+                <button id="editBtn" action="practicosesTable.edit" caption="Editar"/>
+                <button id="removeBtn" action="practicosesTable.remove" caption="Eliminar"/>
+                <button id="refreshBtn" action="practicosesTable.refresh" caption="Refrescar"/>
+                <button id="excelBtn" action="practicosesTable.excel"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

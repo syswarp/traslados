@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://tripulacionBrowse.caption"
+        focusComponent="tripulacionsTable"
+        messagesPack="com.company.traslados.web.screens.tripulacion">
+    <data readOnly="true">
+        <collection id="tripulacionsDc"
+                    class="com.company.traslados.entity.Tripulacion">
+            <view extends="_local"/>
+            <loader id="tripulacionsDl">
+                <query>
+                    <![CDATA[select e from traslados_Tripulacion e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tripulacionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="tripulacionsTable"
+                dataLoader="tripulacionsDl" caption="Filtrar">
+            <properties include=".*"/>
+        </filter>
+        <table id="tripulacionsTable"
+               width="100%"
+               dataContainer="tripulacionsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="cargo"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tripulacionsTable.create" caption="Nuevo"/>
+                <button id="editBtn" action="tripulacionsTable.edit" caption="Editar"/>
+                <button id="removeBtn" action="tripulacionsTable.remove" caption="Eliminar"/>
+                <button id="refreshBtn" action="tripulacionsTable.refresh" caption="Refrescar"/>
+                <button id="excelBtn" action="tripulacionsTable.excel"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,6 @@
+alter table TRASLADOS add constraint FK_TRASLADOS_ON_LANCHA foreign key (LANCHA_ID) references TRASLADOS_LANCHAS(ID);
+alter table TRASLADOS add constraint FK_TRASLADOS_ON_PUERTO foreign key (PUERTO) references TRASLADOS_PUERTOS(ID);
+alter table TRASLADOS add constraint FK_TRASLADOS_ON_PRACTICO foreign key (PRACTICO_ID) references TRASLADOS_PRACTICOS(ID);
+create index IDX_TRASLADOS_ON_LANCHA on TRASLADOS (LANCHA_ID);
+create index IDX_TRASLADOS_ON_PUERTO on TRASLADOS (PUERTO);
+create index IDX_TRASLADOS_ON_PRACTICO on TRASLADOS (PRACTICO_ID);

@@ -1,0 +1,1 @@
+create unique index IDX_TRASLADOS_PRACTICOS_UK_NAME on TRASLADOS_PRACTICOS (NAME) where DELETE_TS is null ;

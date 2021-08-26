@@ -1,0 +1,1 @@
+create unique index IDX_TRASLADOS_LANCHAS_UK_NAME on TRASLADOS_LANCHAS (NAME) where DELETE_TS is null ;

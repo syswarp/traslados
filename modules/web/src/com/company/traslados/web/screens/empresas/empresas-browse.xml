@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="Empresas"
+        focusComponent="empresasesTable"
+        messagesPack="com.company.traslados.web.screens.empresas">
+    <data readOnly="true">
+        <collection id="empresasesDc"
+                    class="com.company.traslados.entity.Empresas">
+            <view extends="_local"/>
+            <loader id="empresasesDl">
+                <query>
+                    <![CDATA[select e from traslados_Empresas e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="empresasesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="empresasesTable"
+                dataLoader="empresasesDl" caption="Filtrar">
+            <properties include=".*"/>
+        </filter>
+        <table id="empresasesTable"
+               width="100%"
+               dataContainer="empresasesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="domicilio"/>
+                <column id="cuit"/>
+                <column id="telefono"/>
+                <column id="email"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="empresasesTable.create" caption="Nueva"/>
+                <button id="editBtn" action="empresasesTable.edit" caption="Editar"/>
+                <button id="removeBtn" action="empresasesTable.remove" caption="Eliminar"/>
+                <button id="refreshBtn" action="empresasesTable.refresh" caption="Refrescar"/>
+                <button id="excelBtn" action="empresasesTable.excel"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

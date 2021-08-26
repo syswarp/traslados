@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://trasladosEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.traslados.web.screens.traslados">
+    <data>
+        <instance id="trasladosDc"
+                  class="com.company.traslados.entity.Traslados">
+            <view extends="_local">
+                <property name="lancha" view="_minimal"/>
+                <property name="puerto" view="_minimal"/>
+                <property name="practico" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="trasladosDc">
+            <column width="350px">
+                <dateField id="fechaField" property="fecha"/>
+                <pickerField id="lanchaField" property="lancha">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="puertoField" property="puerto">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="practicoField" property="practico">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="buqueField" property="buque"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

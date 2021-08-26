@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://trasladosBrowse.caption"
+        focusComponent="trasladosesTable"
+        messagesPack="com.company.traslados.web.screens.traslados">
+    <data readOnly="true">
+        <collection id="trasladosesDc"
+                    class="com.company.traslados.entity.Traslados">
+            <view extends="_local">
+                <property name="lancha" view="_minimal"/>
+                <property name="puerto" view="_minimal"/>
+                <property name="practico" view="_minimal"/>
+            </view>
+            <loader id="trasladosesDl">
+                <query>
+                    <![CDATA[select e from traslados_Traslados e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="trasladosesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="trasladosesTable"
+                dataLoader="trasladosesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="trasladosesTable"
+                    width="100%"
+                    dataContainer="trasladosesDc"
+                    presentations="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="fecha"/>
+                <column id="lancha"/>
+                <column id="puerto"/>
+                <column id="practico"/>
+                <column id="buque"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="trasladosesTable.create" caption="Nuevo"/>
+                <button id="editBtn" action="trasladosesTable.edit" caption="Editar"/>
+                <button id="removeBtn" action="trasladosesTable.remove" caption="Eliminar"/>
+                <button id="refreshBtn" action="trasladosesTable.refresh" caption="Refrescar"/>
+                <button id="excelBtn" action="trasladosesTable.excel"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

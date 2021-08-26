@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://lanchasBrowse.caption"
+        focusComponent="lanchasesTable"
+        messagesPack="com.company.traslados.web.screens.lanchas">
+    <data readOnly="true">
+        <collection id="lanchasesDc"
+                    class="com.company.traslados.entity.Lanchas">
+            <view extends="_local"/>
+            <loader id="lanchasesDl">
+                <query>
+                    <![CDATA[select e from traslados_Lanchas e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="lanchasesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="lanchasesTable"
+                dataLoader="lanchasesDl" caption="Filtrar">
+            <properties include=".*"/>
+        </filter>
+        <table id="lanchasesTable"
+               width="100%"
+               dataContainer="lanchasesDc" caption="Nombre">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="refresh" type="refresh"/>
+                <action id="excel" type="excel"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="lanchasesTable.create" caption="Nuevo"/>
+                <button id="editBtn" action="lanchasesTable.edit" caption="Editar"/>
+                <button id="removeBtn" action="lanchasesTable.remove" caption="Eliminar"/>
+                <button id="refreshBtn" action="lanchasesTable.refresh" caption="Refrescar"/>
+                <button id="excelBtn" action="lanchasesTable.excel"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
